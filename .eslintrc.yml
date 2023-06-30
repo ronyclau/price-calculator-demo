@@ -7,6 +7,8 @@ extends:
   - plugin:@typescript-eslint/recommended
   - plugin:react/recommended
   - plugin:react/jsx-runtime
+  - plugin:react-hooks/recommended
+  - plugin:unicorn/recommended
 parser: "@typescript-eslint/parser"
 parserOptions:
   ecmaVersion: latest
@@ -14,4 +16,33 @@ parserOptions:
 plugins:
   - "@typescript-eslint"
   - react
-rules: {}
+  - import-alias
+rules:
+  import-alias/import-alias:
+    - error
+    - relativeDepth: 1
+      aliases:
+        - alias: "@src/"
+          matcher: "^src/"
+  unicorn/better-regex:
+    - error
+    - sortCharacterClasses: false
+  unicorn/no-unreadable-array-destructuring: off
+  unicorn/prefer-node-append: off
+  unicorn/prefer-query-selector: off
+  unicorn/prevent-abbreviations: off
+  unicorn/catch-error-name:
+    - error
+    - name: err
+  unicorn/filename-case: off
+  unicorn/consistent-function-scoping: off
+  unicorn/prefer-number-properties: off
+  unicorn/no-null: off
+  unicorn/no-useless-undefined:
+    - error
+    - checkArguments: false
+  unicorn/no-reduce: off
+  unicorn/prefer-node-protocol: off
+  unicorn/prefer-module: off
+  unicorn/prefer-spread: off
+  unicorn/no-new-array: off

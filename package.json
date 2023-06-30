@@ -1,9 +1,10 @@
 {
   "name": "price-calculator",
+  "version": "0.0.1",
   "packageManager": "yarn@3.6.0",
   "devDependencies": {
-    "@deanc/esbuild-plugin-postcss": "^1.0.2",
     "@hyrious/esbuild-plugin-commonjs": "^0.2.2",
+    "@ianvs/prettier-plugin-sort-imports": "^4.0.2",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
@@ -12,9 +13,16 @@
     "esbuild": "^0.18.10",
     "esbuild-postcss": "^0.0.4",
     "eslint": "^8.43.0",
-    "eslint-plugin-react": "latest",
+    "eslint-plugin-import-alias": "^1.2.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unicorn": "^47.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.3",
+    "pinst": "^3.0.0",
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.1.6"
   },
@@ -26,6 +34,9 @@
     "watch": "WATCH=1 node esbuild.mjs",
     "serve": "SERVE=1 node esbuild.mjs",
     "build": "node esbuild.mjs",
-    "build:prod": "NODE_ENV=production node esbuild.mjs"
+    "build:prod": "NODE_ENV=production node esbuild.mjs",
+    "postinstall": "husky install",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   }
 }
