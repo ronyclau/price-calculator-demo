@@ -1,4 +1,31 @@
 {
   "name": "price-calculator",
-  "packageManager": "yarn@3.6.0"
+  "packageManager": "yarn@3.6.0",
+  "devDependencies": {
+    "@deanc/esbuild-plugin-postcss": "^1.0.2",
+    "@hyrious/esbuild-plugin-commonjs": "^0.2.2",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "autoprefixer": "^10.4.14",
+    "esbuild": "^0.18.10",
+    "esbuild-postcss": "^0.0.4",
+    "eslint": "^8.43.0",
+    "eslint-plugin-react": "latest",
+    "postcss": "^8.4.24",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "scripts": {
+    "watch": "WATCH=1 node esbuild.mjs",
+    "serve": "SERVE=1 node esbuild.mjs",
+    "build": "node esbuild.mjs",
+    "build:prod": "NODE_ENV=production node esbuild.mjs"
+  }
 }
