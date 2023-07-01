@@ -3,8 +3,8 @@ import { cp as fsCp } from "node:fs/promises";
 
 // import postCssPlugin from "@deanc/esbuild-plugin-postcss";
 import { commonjs } from "@hyrious/esbuild-plugin-commonjs";
-import postCssPlugin from "esbuild-postcss";
 import esbuild from "esbuild";
+import postCssPlugin from "esbuild-postcss";
 
 const PORT = process.env.PORT || 3000;
 const isServe = !!process.env.SERVE;
@@ -25,6 +25,7 @@ const config = {
   entryPoints: ["src/index.tsx"],
   plugins: [postCssPlugin(), commonjs()],
   define: { _IS_DEV_: isServe ? "true" : "false" },
+  loader: { ".jpg": "copy", ".png": "copy", ".svg": "copy" },
 };
 
 // Copy content of public directory to dist

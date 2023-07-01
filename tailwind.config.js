@@ -24,10 +24,18 @@ module.exports = {
         "blue-grayish-light": "hsl(223, 50%, 87%)",
         "blue-grayish": "hsl(225, 20%, 60%)",
         "blue-desat-dark": "hsl(227, 35%, 25%)",
+        "blue-dark": "#2b3255",
       },
     },
     fontFamily: {
       sans: ["Manrope", "sans-serif"],
+    },
+    backgroundImage: {
+      "calculator-pattern": "url(./images/bg-pattern.svg)",
+      "circle-pattern": "url(./images/pattern-circles.svg)",
+    },
+    listStyleImage: {
+      check: "url(./images/icon-check.svg)",
     },
   },
   plugins: [],

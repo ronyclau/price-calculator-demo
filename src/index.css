@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .grid-areas-calculator-top {
+    grid-template-areas:
+      "a b"
+      ". c"
+      "d d"
+      "e e";
+  }
+}
+
 :root {
   font-size: 15px;
+}
+
+body {
+  background: url("./images/page-bg.jpg");
+  background-size: cover;
+  background-position: center center;
 }

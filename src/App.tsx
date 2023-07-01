@@ -1,5 +1,7 @@
 import type { FC } from "react";
 
-const App: FC = () => <h1 className="text-xl">Hello world!</h1>;
+import CalculatorPage from "./pages/CalculatorPage";
+
+const App: FC = () => <CalculatorPage />;
 
 export default App;
