@@ -1,6 +1,9 @@
 import type { FC } from "react";
 
+import CTAListing from "@src/components/CTAListing";
 import PageLayout from "@src/components/PageLayout";
+import RangeSlider from "@src/components/RangeSlider";
+import { CTA_ITEMS } from "@src/constants/text";
 import type { PropsWithClassName } from "@src/types/components";
 
 const CalculatorPage: FC<PropsWithClassName> = (props) => (
@@ -24,7 +27,7 @@ const CalculatorPage: FC<PropsWithClassName> = (props) => (
             <span>32 CRO</span>
             <span>&nbsp;/ month</span>
           </div>
-          <input className="[grid-area:d]" type="range" />
+          <RangeSlider className="[grid-area:d]" />
           <div className="mt-4 flex items-center gap-4 text-xs [grid-area:e]">
             <label className="flex-1 text-right">Monthly Billing</label>
             <input type="checkbox" />
@@ -37,17 +40,7 @@ const CalculatorPage: FC<PropsWithClassName> = (props) => (
           </div>
         </div>
         <div className="flex items-center justify-between gap-2 border-t px-8 py-6">
-          <ul className="list-inside list-['✔'] list-image-check text-xs">
-            <li className="mb-2">
-              <span className="ml-4">Unlimited websites</span>
-            </li>
-            <li className="mb-2">
-              <span className="ml-4">100% data ownership</span>
-            </li>
-            <li>
-              <span className="ml-4">Email reports</span>
-            </li>
-          </ul>
+          <CTAListing items={CTA_ITEMS} />
           <button className="rounded-full bg-blue-dark px-8 py-2 text-xs font-bold text-blue-pale">
             Start my trial
           </button>
