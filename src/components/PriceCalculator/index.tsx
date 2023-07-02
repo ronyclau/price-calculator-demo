@@ -25,9 +25,13 @@ const PriceCalculator: FC<PropsWithClassName> = ({ className }) => {
         className
       )}
     >
-      <span className="uppercase [grid-area:a]">{rate.pv} pageviews</span>
+      <span className="uppercase tracking-widest [grid-area:a]">
+        {rate.pv} pageviews
+      </span>
       <div className="flex items-center justify-end [grid-area:b]">
-        <span className="text-3xl font-bold">${effectiveRate.toFixed(2)}</span>
+        <span className="text-3xl font-extrabold text-blue-desat-dark">
+          ${effectiveRate.toFixed(2)}
+        </span>
         <span>&nbsp;/ month</span>
       </div>
       <div className="flex items-center justify-end text-xs [grid-area:c]">
