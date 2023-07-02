@@ -5,6 +5,15 @@
 @layer utilities {
   .grid-areas-calculator-top {
     grid-template-areas:
+      "a a a"
+      "d d d"
+      ". b ."
+      ". c ."
+      "e e e";
+  }
+
+  .grid-areas-calculator-top-desktop {
+    grid-template-areas:
       "a b"
       ". c"
       "d d"
