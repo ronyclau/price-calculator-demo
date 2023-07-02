@@ -1,9 +1,23 @@
 import classNames from "classnames";
-import type { FC } from "react";
+import { useMemo, useState, type FC } from "react";
 
+import { AVAILABLE_RATES, YEARLY_DISCOUNT } from "@src/constants/calculator";
 import type { PropsWithClassName } from "@src/types/components";
 
+import CROPriceDisplay from "../CROPriceDisplay";
+import RangeSlider from "../RangeSlider";
+
 const PriceCalculator: FC<PropsWithClassName> = ({ className }) => {
+  const [rateIndex, updateRateIndex] = useState(
+    Math.floor(AVAILABLE_RATES.length / 2)
+  );
+  const [isBilledYearly, updateIsBilledYearly] = useState(false);
+  const rate = useMemo(() => AVAILABLE_RATES[rateIndex], [rateIndex]);
+  const effectiveRate = useMemo(
+    () => rate.rate * (isBilledYearly ? 1 - YEARLY_DISCOUNT : 1),
+    [isBilledYearly, rate]
+  );
+
   return (
     <div
       className={classNames(
@@ -11,20 +25,33 @@ const PriceCalculator: FC<PropsWithClassName> = ({ className }) => {
         className
       )}
     >
-      <span className="uppercase [grid-area:a]">100k pageviews</span>
+      <span className="uppercase [grid-area:a]">{rate.pv} pageviews</span>
       <div className="flex items-center justify-end [grid-area:b]">
-        <span className="text-3xl font-bold">$16.00</span>
+        <span className="text-3xl font-bold">${effectiveRate.toFixed(2)}</span>
         <span>&nbsp;/ month</span>
       </div>
-      <div className="flex items-center justify-end text-xs [grid-area:c]">
-        <span>or ~</span>
-        <span>32 CRO</span>
-        <span>&nbsp;/ month</span>
-      </div>
-      <input type="range" className="[grid-area:d]" />
+      <CROPriceDisplay
+        className="[grid-area:c]"
+        priceInFiat={effectiveRate}
+        conversionRate={0.25} // FIXME use real rates
+      />
+      <RangeSlider
+        className="[grid-area:d]"
+        max={AVAILABLE_RATES.length - 1}
+        value={rateIndex}
+        onChange={(v) => {
+          updateRateIndex(v);
+        }}
+      />
       <div className="mt-4 flex items-center gap-4 text-xs [grid-area:e]">
         <label className="flex-1 text-right">Monthly Billing</label>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          checked={isBilledYearly}
+          onChange={() => {
+            updateIsBilledYearly((v) => !v);
+          }}
+        />
         <div className="flex flex-1 gap-2">
           <label>Yearly Billing</label>
           <div className="rounded-md bg-red-grayish-light px-1 text-[smaller] font-bold text-red-light before:content-['-'] md:before:content-none md:after:content-['_discount']">
