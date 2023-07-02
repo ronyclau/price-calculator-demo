@@ -2,7 +2,7 @@ import type { FC } from "react";
 
 import CTAListing from "@src/components/CTAListing";
 import PageLayout from "@src/components/PageLayout";
-import RangeSlider from "@src/components/RangeSlider";
+import PriceCalculator from "@src/components/PriceCalculator";
 import { CTA_ITEMS } from "@src/constants/text";
 import type { PropsWithClassName } from "@src/types/components";
 
@@ -16,29 +16,7 @@ const CalculatorPage: FC<PropsWithClassName> = (props) => (
         </h2>
       </div>
       <div className="flex w-full max-w-lg flex-col rounded bg-white text-sm shadow">
-        <div className="grid-areas-calculator-top grid items-center justify-between gap-x-4 gap-y-1 px-8 pb-8 pt-10">
-          <span className="uppercase [grid-area:a]">100k pageviews</span>
-          <div className="flex items-center justify-end [grid-area:b]">
-            <span className="text-3xl font-bold">$16.00</span>
-            <span>&nbsp;/ month</span>
-          </div>
-          <div className="flex items-center justify-end text-xs [grid-area:c]">
-            <span>or ~</span>
-            <span>32 CRO</span>
-            <span>&nbsp;/ month</span>
-          </div>
-          <RangeSlider className="[grid-area:d]" />
-          <div className="mt-4 flex items-center gap-4 text-xs [grid-area:e]">
-            <label className="flex-1 text-right">Monthly Billing</label>
-            <input type="checkbox" />
-            <div className="flex flex-1 gap-2">
-              <label>Yearly Billing</label>
-              <div className="rounded-md bg-red-grayish-light px-1 text-[smaller] font-bold text-red-light before:content-['-'] md:before:content-none md:after:content-['_discount']">
-                25%
-              </div>
-            </div>
-          </div>
-        </div>
+        <PriceCalculator />
         <div className="flex items-center justify-between gap-2 border-t px-8 py-6">
           <CTAListing items={CTA_ITEMS} />
           <button className="rounded-full bg-blue-dark px-8 py-2 text-xs font-bold text-blue-pale">
