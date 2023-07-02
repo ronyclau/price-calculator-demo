@@ -1,4 +1,7 @@
 /* eslint-env node */
+/* eslint-disable @typescript-eslint/no-var-requires */
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./{src,public}/**/*.{tsx,jsx,htm,html}"],
@@ -33,10 +36,21 @@ module.exports = {
     backgroundImage: {
       "calculator-pattern": "url(./images/bg-pattern.svg)",
       "circle-pattern": "url(./images/pattern-circles.svg)",
+      "slider-thumb": "url(./images/icon-slider.svg)",
     },
     listStyleImage: {
       check: "url(./images/icon-check.svg)",
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addVariant }) {
+      // Range thumb
+      // N.B. don't merge these two, it doesn't work well on Chrome
+      addVariant("range-thumb-moz", 'input[type="range"]&::-moz-range-thumb');
+      addVariant(
+        "range-thumb-wk",
+        'input[type="range"]&::-webkit-slider-thumb'
+      );
+    }),
+  ],
 };

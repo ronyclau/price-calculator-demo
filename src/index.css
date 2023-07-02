@@ -10,6 +10,40 @@
       "d d"
       "e e";
   }
+
+  input[type="range"].reset-range-appearance::-moz-range-thumb {
+    appearance: none;
+    background: transparent;
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    width: 10px;
+    height: 10px;
+  }
+
+  input[type="range"].reset-range-appearance::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    width: 10px;
+    height: 10px;
+  }
+
+  input[type="range"].reset-range-appearance::-moz-range-track {
+    background: transparent;
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  input[type="range"].reset-range-appearance::-webkit-slider-runnable-track {
+    background: transparent;
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
 
 :root {
