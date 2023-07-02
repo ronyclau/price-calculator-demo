@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import type { FC } from "react";
 
 import type { CompProps } from "@src/types/components";
@@ -13,13 +12,9 @@ const CROPriceDisplay: FC<Props> = ({
   priceInFiat,
   conversionRate,
 }) => (
-  <div
-    className={classNames("flex items-center justify-end text-xs", className)}
-  >
-    <span>or ~</span>
-    <span>{Math.round(priceInFiat * conversionRate)} CRO</span>
-    <span>&nbsp;/ month</span>
-  </div>
+  <span className={className}>
+    ~ {Math.round(priceInFiat * conversionRate)} CRO
+  </span>
 );
 
 export default CROPriceDisplay;

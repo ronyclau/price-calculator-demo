@@ -2,9 +2,9 @@ import classNames from "classnames";
 import { useMemo, useState, type FC } from "react";
 
 import { AVAILABLE_RATES, YEARLY_DISCOUNT } from "@src/constants/calculator";
+import CROPriceDisplayContainer from "@src/containers/CROPriceDisplayContainer";
 import type { PropsWithClassName } from "@src/types/components";
 
-import CROPriceDisplay from "../CROPriceDisplay";
 import RangeSlider from "../RangeSlider";
 
 const PriceCalculator: FC<PropsWithClassName> = ({ className }) => {
@@ -30,11 +30,12 @@ const PriceCalculator: FC<PropsWithClassName> = ({ className }) => {
         <span className="text-3xl font-bold">${effectiveRate.toFixed(2)}</span>
         <span>&nbsp;/ month</span>
       </div>
-      <CROPriceDisplay
-        className="[grid-area:c]"
-        priceInFiat={effectiveRate}
-        conversionRate={0.25} // FIXME use real rates
-      />
+      <div className="flex items-center justify-end text-xs [grid-area:c]">
+        <span>or&nbsp;</span>
+        <CROPriceDisplayContainer priceInFiat={effectiveRate} />
+        <span>&nbsp;/ month</span>
+      </div>
+
       <RangeSlider
         className="[grid-area:d]"
         max={AVAILABLE_RATES.length - 1}

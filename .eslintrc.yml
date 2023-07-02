@@ -46,3 +46,4 @@ rules:
   unicorn/prefer-module: off
   unicorn/prefer-spread: off
   unicorn/no-new-array: off
+  unicorn/no-nested-ternary: off
