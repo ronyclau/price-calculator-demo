@@ -6,6 +6,7 @@ import CROPriceDisplayContainer from "@src/containers/CROPriceDisplayContainer";
 import type { PropsWithClassName } from "@src/types/components";
 
 import RangeSlider from "../RangeSlider";
+import ToggleButton from "../ToggleButton";
 
 const PriceCalculator: FC<PropsWithClassName> = ({ className }) => {
   const [rateIndex, updateRateIndex] = useState(
@@ -50,8 +51,7 @@ const PriceCalculator: FC<PropsWithClassName> = ({ className }) => {
       />
       <div className="mt-4 flex items-center gap-4 text-xs [grid-area:e]">
         <label className="flex-1 text-right">Monthly Billing</label>
-        <input
-          type="checkbox"
+        <ToggleButton
           checked={isBilledYearly}
           onChange={() => {
             updateIsBilledYearly((v) => !v);
