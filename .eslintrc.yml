@@ -47,3 +47,9 @@ rules:
   unicorn/prefer-spread: off
   unicorn/no-new-array: off
   unicorn/no-nested-ternary: off
+overrides:
+  - files:
+      - src/**/*.stories.tsx
+      - src/**/*.stories.jsx
+    rules:
+      react/prop-types: off
