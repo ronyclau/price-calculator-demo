@@ -7,3 +7,11 @@
    ```
    PORT=3000 yarn build-and-serve
    ```
+
+## Ladle
+
+Components in form of stories can be viewed and tested individually with Ladle:
+
+```
+yarn stories
+```
