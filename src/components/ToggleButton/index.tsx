@@ -5,7 +5,7 @@ import type { CompProps } from "@src/types/components";
 
 export interface Props extends CompProps {
   checked?: boolean;
-  onChange: (state: boolean) => void;
+  onChange?: (state: boolean) => void;
 }
 
 const ToggleButton: FC<Props> = ({ checked, className, onChange }) => {
@@ -20,7 +20,7 @@ const ToggleButton: FC<Props> = ({ checked, className, onChange }) => {
       type="checkbox"
       checked={checked}
       onChange={() => {
-        onChange(!checked);
+        onChange?.(!checked);
       }}
     />
   );

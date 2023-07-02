@@ -13,7 +13,7 @@ export interface Props extends CompProps {
   min?: number;
   max?: number;
   value: number;
-  onChange: (value: number) => void;
+  onChange?: (value: number) => void;
 }
 
 const RangeSlider: FC<Props> = ({
@@ -30,7 +30,7 @@ const RangeSlider: FC<Props> = ({
       const target = ev.currentTarget;
       if (target) {
         const newValue = parseInt(target.value, 10);
-        !Number.isNaN(newValue) && onChange(newValue);
+        !Number.isNaN(newValue) && onChange?.(newValue);
       }
     },
     [onChange]
