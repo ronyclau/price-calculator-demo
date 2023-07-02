@@ -1,5 +1,5 @@
 /* eslint-env node */
-import { cp as fsCp } from "node:fs/promises";
+import { cp as fsCp, rm as fsRm } from "node:fs/promises";
 
 // import postCssPlugin from "@deanc/esbuild-plugin-postcss";
 import { commonjs } from "@hyrious/esbuild-plugin-commonjs";
@@ -29,6 +29,7 @@ const config = {
 };
 
 // Copy content of public directory to dist
+await fsRm("dist", { recursive: true, force: true });
 await fsCp("public", "dist", { recursive: true });
 
 // Build / Serve
