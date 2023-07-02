@@ -1,5 +1,11 @@
 import classNames from "classnames";
-import { useCallback, useState, type FC, type FormEventHandler } from "react";
+import {
+  useCallback,
+  useEffect,
+  useState,
+  type FC,
+  type FormEventHandler,
+} from "react";
 
 import type { CompProps } from "@src/types/components";
 
@@ -36,12 +42,21 @@ const RangeSlider: FC<Props> = ({
     setIsRangeFocused(false);
   }, []);
 
-  const filledPercentage = (value / (max - min)) * 100;
+  useEffect(() => {
+    // Clamp value when limits changed
+    if (min > value) {
+      onChange(min);
+    } else if (max < value) {
+      onChange(max);
+    }
+  }, [min, max, value, onChange]);
+
+  const filledPercentage = ((value - min) / (max - min)) * 100;
 
   return (
     <div className={classNames("relative h-8", className)}>
       {/* Styled range slider */}
-      <div className="absolute flex h-full w-full items-center">
+      <div className="absolute flex h-full w-full items-center overflow-hidden">
         {/* Track */}
         <div className="h-2 w-full overflow-hidden rounded-full border-l-[20px] border-l-cyan-soft bg-blue-grayish-pale pr-4">
           {/* Active portion */}
@@ -56,7 +71,7 @@ const RangeSlider: FC<Props> = ({
         <div
           className="absolute left-4 right-4 top-0 transform-gpu"
           style={{
-            "--tw-translate-x": `calc(${filledPercentage}% - 16px)`,
+            "--tw-translate-x": `calc(${filledPercentage}% - 15px)`,
           }}
         >
           <div
